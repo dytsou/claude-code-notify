@@ -89,3 +89,7 @@ If you move the repo directory, re-run `./install.sh` to update the path in `set
 | `WarpTerminal`    | Warp          |
 | `Hyper`           | Hyper         |
 | _(anything else)_ | Terminal.app  |
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
