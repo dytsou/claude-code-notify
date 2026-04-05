@@ -1,0 +1,23 @@
+{
+  "_comment": "Add this PermissionRequest entry to ~/.claude/settings.json under 'hooks'. Replace /ABSOLUTE/PATH/TO with the actual path to your clone of claude-code-notify.",
+  "hooks": {
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /ABSOLUTE/PATH/TO/claude-code-notify/presummary.py",
+            "timeout": 12000,
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "python3 /ABSOLUTE/PATH/TO/claude-code-notify/notify.py",
+            "timeout": 65000,
+            "statusMessage": "Waiting for approval..."
+          }
+        ]
+      }
+    ]
+  }
+}
