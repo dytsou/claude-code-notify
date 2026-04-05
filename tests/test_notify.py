@@ -8,7 +8,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 # Repo root on PYTHONPATH (set in CI and local: PYTHONPATH=. python3 -m unittest ...)
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
 import notify  # noqa: E402
 

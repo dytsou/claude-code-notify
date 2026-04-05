@@ -18,7 +18,7 @@ jobs:
           python-version: "3.12"
 
       - name: Compile Python
-        run: python3 -m compileall -q notify.py presummary.py
+        run: python3 -m compileall -q src
 
       - name: Shell script syntax
         run: |
@@ -28,5 +28,5 @@ jobs:
 
       - name: Unit tests
         env:
-          PYTHONPATH: ${{ github.workspace }}
+          PYTHONPATH: ${{ github.workspace }}/src
         run: python3 -m unittest discover -s tests -v

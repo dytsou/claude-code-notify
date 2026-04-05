@@ -6,13 +6,13 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 /ABSOLUTE/PATH/TO/claude-code-notify/presummary.py",
+            "command": "python3 /ABSOLUTE/PATH/TO/claude-code-notify/src/presummary.py",
             "timeout": 12000,
             "async": true
           },
           {
             "type": "command",
-            "command": "python3 /ABSOLUTE/PATH/TO/claude-code-notify/notify.py",
+            "command": "python3 /ABSOLUTE/PATH/TO/claude-code-notify/src/notify.py",
             "timeout": 65000,
             "statusMessage": "Waiting for approval..."
           }

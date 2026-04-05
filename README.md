@@ -7,7 +7,7 @@ When Claude Code asks for permission to run a command or edit a file, you get a 
 ## How it works
 
 - Claude Code fires a `PermissionRequest` hook before showing a permission prompt
-- `notify.py` intercepts it and shows a native macOS notification with action buttons
+- `src/notify.py` intercepts it and shows a native macOS notification with action buttons
 - Click **Approve** → Claude proceeds immediately
 - Click **Reject** → Claude is denied
 - Click **Ask in Terminal** (or let it time out after 60s) → falls back to the normal Claude Code terminal prompt
@@ -33,7 +33,7 @@ Then **restart Claude Code**.
 `install.sh` will:
 
 1. Download and install [`alerter`](https://github.com/vjeantet/alerter) (the notification backend)
-2. Add a `PermissionRequest` hook to `~/.claude/settings.json` pointing to `notify.py`
+2. Add a `PermissionRequest` hook to `~/.claude/settings.json` pointing at `src/presummary.py` (async) and `src/notify.py` (sync)
 
 ## Uninstall
 
@@ -46,7 +46,7 @@ Removes the `PermissionRequest` entry from `~/.claude/settings.json`. Does not r
 
 ## Manual setup
 
-If you already have a custom `~/.claude/settings.json` and want to add the hook manually, merge the contents of `settings-snippet.json` — replacing the path with the absolute path to your local `notify.py`:
+If you already have a custom `~/.claude/settings.json` and want to add the hook manually, merge the contents of `settings-snippet.json` — replacing the paths with the absolute paths to your local `src/presummary.py` and `src/notify.py`:
 
 ```json
 {
@@ -56,7 +56,7 @@ If you already have a custom `~/.claude/settings.json` and want to add the hook 
         "hooks": [
           {
             "type": "command",
-            "command": "python3 /absolute/path/to/claude-code-notify/notify.py",
+            "command": "python3 /absolute/path/to/claude-code-notify/src/notify.py",
             "timeout": 65000,
             "statusMessage": "Waiting for approval..."
           }
@@ -71,7 +71,7 @@ The hook must be **synchronous** (no `"async": true`) so Claude Code waits for t
 
 ## Notification fallback
 
-If `alerter` is not found, `notify.py` falls back to an `osascript` dialog popup. To restore inline notification buttons, re-run `./install.sh`.
+If `alerter` is not found, `src/notify.py` falls back to an `osascript` dialog popup. To restore inline notification buttons, re-run `./install.sh`.
 
 ## Moving the repo
 
@@ -79,7 +79,7 @@ If you move the repo directory, re-run `./install.sh` to update the path in `set
 
 ## Terminal detection
 
-`notify.py` detects your terminal app from `$TERM_PROGRAM` to bring the right window to focus when you click the notification body:
+`src/notify.py` detects your terminal app from `$TERM_PROGRAM` to bring the right window to focus when you click the notification body:
 
 | `$TERM_PROGRAM`   | App activated |
 | ----------------- | ------------- |

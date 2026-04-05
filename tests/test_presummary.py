@@ -7,7 +7,7 @@ from io import StringIO
 from pathlib import Path
 from unittest.mock import MagicMock, mock_open, patch
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
 import presummary  # noqa: E402
 

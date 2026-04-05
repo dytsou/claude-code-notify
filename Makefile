@@ -10,6 +10,6 @@ test:
 	bash test.sh
 
 ci:
-	python3 -m compileall -q notify.py presummary.py
+	python3 -m compileall -q src
 	bash -n install.sh uninstall.sh test.sh
-	PYTHONPATH=. python3 -m unittest discover -s tests -v
+	PYTHONPATH=src python3 -m unittest discover -s tests -v
