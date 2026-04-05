@@ -22,9 +22,9 @@ jobs:
 
       - name: Shell script syntax
         run: |
-          bash -n install.sh
-          bash -n uninstall.sh
-          bash -n test.sh
+          bash -n scripts/install.sh
+          bash -n scripts/uninstall.sh
+          bash -n scripts/test.sh
 
       - name: Unit tests
         env:

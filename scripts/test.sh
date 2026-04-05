@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-NOTIFY="$SCRIPT_DIR/src/notify.py"
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+NOTIFY="$REPO_ROOT/src/notify.py"
 
 echo "claude-code-notify — functional test"
 echo "======================================"

@@ -1,15 +1,18 @@
 .PHONY: install uninstall test ci
 
 install:
-	bash install.sh
+	chmod +x scripts/install.sh
+	bash scripts/install.sh
 
 uninstall:
-	bash uninstall.sh
+	chmod +x scripts/uninstall.sh
+	bash scripts/uninstall.sh
 
 test:
-	bash test.sh
+	chmod +x scripts/test.sh
+	bash scripts/test.sh
 
 ci:
 	python3 -m compileall -q src
-	bash -n install.sh uninstall.sh test.sh
+	bash -n scripts/install.sh scripts/uninstall.sh scripts/test.sh
 	PYTHONPATH=src python3 -m unittest discover -s tests -v

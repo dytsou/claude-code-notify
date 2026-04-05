@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-NOTIFY_SCRIPT="$SCRIPT_DIR/src/notify.py"
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+NOTIFY_SCRIPT="$REPO_ROOT/src/notify.py"
 SETTINGS="$HOME/.claude/settings.json"
 
 echo "==> claude-code-notify installer"
@@ -52,7 +52,7 @@ if [ ! -f "$SETTINGS" ]; then
 fi
 
 # ── 4. Inject PermissionRequest hooks ────────────────────────────────────────
-PRESUMMARY_SCRIPT="$SCRIPT_DIR/src/presummary.py"
+PRESUMMARY_SCRIPT="$REPO_ROOT/src/presummary.py"
 
 python3 - "$SETTINGS" "$PRESUMMARY_SCRIPT" "$NOTIFY_SCRIPT" <<'PYEOF'
 import sys, json

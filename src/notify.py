@@ -7,7 +7,7 @@ interactive macOS notification with inline Approve / Reject buttons.
 Outputs the user's decision as JSON so Claude Code can proceed without
 requiring terminal focus.
 
-Install: ./install.sh
+Install: ./scripts/install.sh
 """
 
 import sys

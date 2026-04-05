@@ -24,13 +24,12 @@ When Claude Code asks for permission to run a command or edit a file, you get a 
 ```bash
 git clone https://github.com/dytsou/claude-code-notify
 cd claude-code-notify
-chmod +x install.sh
-./install.sh
+make install
 ```
 
 Then **restart Claude Code**.
 
-`install.sh` will:
+`make install` will:
 
 1. Download and install [`alerter`](https://github.com/vjeantet/alerter) (the notification backend)
 2. Add a `PermissionRequest` hook to `~/.claude/settings.json` pointing at `src/presummary.py` (async) and `src/notify.py` (sync)
@@ -38,8 +37,7 @@ Then **restart Claude Code**.
 ## Uninstall
 
 ```bash
-chmod +x uninstall.sh
-./uninstall.sh
+make uninstall
 ```
 
 Removes the `PermissionRequest` entry from `~/.claude/settings.json`. Does not remove `alerter`.
@@ -71,11 +69,11 @@ The hook must be **synchronous** (no `"async": true`) so Claude Code waits for t
 
 ## Notification fallback
 
-If `alerter` is not found, `src/notify.py` falls back to an `osascript` dialog popup. To restore inline notification buttons, re-run `./install.sh`.
+If `alerter` is not found, `src/notify.py` falls back to an `osascript` dialog popup. To restore inline notification buttons, re-run `./scripts/install.sh`.
 
 ## Moving the repo
 
-If you move the repo directory, re-run `./install.sh` to update the path in `settings.json`.
+If you move the repo directory, re-run `./scripts/install.sh` to update the path in `settings.json`.
 
 ## Terminal detection
 
